@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xmlns:camel="http://camel.apache.org/schema/blueprint"
+	xmlns:camelcxf="http://camel.apache.org/schema/blueprint/cxf"
+	xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0
+       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0/blueprint-cm-1.0.0.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+       http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd
+       http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd" >
+
+	<!-- Configuration Admin suppport -->
+	<cm:property-placeholder persistent-id="de.inovex.jax2013.showcase.cxf.producer" update-strategy="reload" /> 
+
+	<!-- define cxf endpoint for camel usage -->
+    <camelcxf:cxfEndpoint id="messageService" address="${cxf.remote.url}"
+        serviceClass="de.inovex.jax2013.showcase.wsendpoint.MessageEndpoint" wsdlURL="${cxf.remote.url}?wsdl" >
+        <camelcxf:properties>
+            <entry key="dataFormat" value="POJO" />
+        </camelcxf:properties>
+    </camelcxf:cxfEndpoint>
+
+	<!-- bean containing the camel route -->
+	<bean id="producerRoute" class="de.inovex.jax2013.showcase.cxf.producer.MessageRoute" >
+		<property name="inputPath" value="${file.location}" />
+	</bean>
+
+    <!-- Camel context of this bundle containing all routes -->
+	<camelContext id="blueprintContext" trace="false"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<routeBuilder ref="producerRoute" />
+	</camelContext>
+
+</blueprint>
