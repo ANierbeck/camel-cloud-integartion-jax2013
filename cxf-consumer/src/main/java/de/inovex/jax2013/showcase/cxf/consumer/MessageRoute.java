@@ -13,6 +13,7 @@ public class MessageRoute extends RouteBuilder {
 				.routeId(ShowcaseDefaults.MESSAGE_ROUTE_ID)
 				.log(LoggingLevel.WARN, ShowcaseDefaults.MESSAGE_LOGGER,
 						"Received Message ${body}")
+				.setBody().simple("${body.message}")
 				.to(ShowcaseDefaults.HAZELCAST_QUEUE);
 	}
 
