@@ -26,6 +26,7 @@ public class HazelCastRoute extends RouteBuilder {
 	public void configure() throws Exception {
 		
 		from(ShowcaseDefaults.HAZELCAST_QUEUE)
+				.id(ShowcaseDefaults.HAZELCAST_CONSUMER_ROUTE_ID)
 				.log(LoggingLevel.WARN, ShowcaseDefaults.MESSAGE_LOGGER,"Retrieved message: ${body}")
 				.setHeader("filenName").constant("MessageFile.txt")
 				.to("aws-s3://"+bucketName+"?amazonS3Client=#client");

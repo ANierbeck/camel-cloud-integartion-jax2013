@@ -28,7 +28,7 @@
     </bean>
 
 	<!-- bean containing the camel route -->
-	<bean id="messagingRoute" class="de.inovex.jax2013.showcase.cxf.consumer.MessageRoute" />
+	<bean id="messagingRoute" class="de.inovex.jax2013.showcase.cxf.consumer.MessageConsumerRoute" />
 
     <!-- Camel context of this bundle containing all routes -->
 	<camelContext id="blueprintContext" trace="false"

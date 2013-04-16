@@ -15,13 +15,14 @@ import de.inovex.jax2013.showcase.wsendpoint.Message;
  * @author anierbeck
  *
  */
-public class MessageRoute extends RouteBuilder {
+public class MessageProducerRoute extends RouteBuilder {
 
 	private String inputPath;
 
 	@Override
 	public void configure() throws Exception {
 		from("file://"+inputPath+"?moveFailed=.failed")
+			.routeId(ShowcaseDefaults.CXF_PRODUCER_ROUTE_ID)
 			.convertBodyTo(String.class)
 			.log(LoggingLevel.WARN, ShowcaseDefaults.MESSAGE_LOGGER, "Retrieved incoming text ${body}")
 			.process(new Processor() {

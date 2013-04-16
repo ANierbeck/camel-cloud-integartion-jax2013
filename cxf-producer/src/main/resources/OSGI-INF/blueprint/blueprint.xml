@@ -24,7 +24,7 @@
     </camelcxf:cxfEndpoint>
 
 	<!-- bean containing the camel route -->
-	<bean id="producerRoute" class="de.inovex.jax2013.showcase.cxf.producer.MessageRoute" >
+	<bean id="producerRoute" class="de.inovex.jax2013.showcase.cxf.producer.MessageProducerRoute" >
 		<property name="inputPath" value="${file.location}" />
 	</bean>
 
