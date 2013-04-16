@@ -4,38 +4,12 @@
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${dependency.camel.version}/xml/features</repository>
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${dependency.cxf.version}/xml/features</repository>
 
-	<feature name="base" version="${project.version}" description="JAX Showcase - Base Feature">
-		<!-- depending camel features -->
-		<feature version="${dependency.camel.version}">camel-blueprint</feature>
-	</feature>
-
-	<feature name="base-cxf" version="${project.version}"
-		description="JAX Showcase - Base Feature">
-		<feature version="${project.version}">base</feature>
-		<!-- depending camel features -->
-		<feature version="${dependency.camel.version}">camel-cxf</feature>
-	</feature>
-
-	<feature name="base-hazelcast" version="${project.version}"
-		description="JAX Showcase - Base Feature">
-		<feature version="${project.version}">base-cxf</feature>
-		<!-- depending camel features -->
-		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
-	</feature>
-
-	<feature name="base-s3" version="${project.version}"
-		description="JAX Showcase - Base Feature">
-		<feature version="${project.version}">base</feature>
-		<!-- depending camel features -->
-		<feature version="${dependency.camel.version}">camel-aws</feature>
-		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
-	</feature>
-
-
 	<feature name="showcase-cxf-consumer" version="${project.version}"
 		description="JAX Showcase - Karaf Feature">
 		<details>Just the CXF consumer part cxf->hazelcast.</details>
-		<feature version="${project.version}">base-hazelcast</feature>
+		<feature version="${dependency.camel.version}">camel-blueprint</feature>
+		<feature version="${dependency.camel.version}">camel-cxf</feature>
+		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
 		<bundle>mvn:${project.groupId}/cxf-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
@@ -43,7 +17,9 @@
 	<feature name="showcase-hazelcast-consumer" version="${project.version}">
 		<details>The Hazelcast Consumer. Hazelcast -> S3 Bucket</details>
 		<configfile finalname="/etc/de.inovex.jax2013.showcase.s3.producer.cfg">mvn:${project.groupId}/hazelcast-consumer/${project.version}/cfg</configfile>
-		<feature version="${project.version}">base-s3</feature>
+		<feature version="${dependency.camel.version}">camel-blueprint</feature>
+		<feature version="${dependency.camel.version}">camel-aws</feature>
+		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
 		<bundle>mvn:${project.groupId}/hazelcast-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
@@ -52,7 +28,8 @@
 		description="JAX Showcase - Karaf Feature">
 		<details>The CXF Producing part: File -> CXF</details>
 		<configfile finalname="/etc/de.inovex.jax2013.showcase.cxf.producer.cfg">mvn:${project.groupId}/cxf-producer/${project.version}/cfg</configfile>
-		<feature version="${project.version}">base-cxf</feature>
+		<feature version="${dependency.camel.version}">camel-blueprint</feature>
+		<feature version="${dependency.camel.version}">camel-cxf</feature>
 		<bundle>mvn:${project.groupId}/cxf-producer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
