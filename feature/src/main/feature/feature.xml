@@ -19,6 +19,7 @@
 		<configfile finalname="/etc/de.inovex.jax2013.showcase.s3.producer.cfg">mvn:${project.groupId}/hazelcast-consumer/${project.version}/cfg</configfile>
 		<feature version="${dependency.camel.version}">camel-blueprint</feature>
 		<feature version="${dependency.camel.version}">camel-aws</feature>
+		<feature version="${dependency.camel.version}">camel-cxf</feature>
 		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
 		<bundle>mvn:${project.groupId}/hazelcast-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
