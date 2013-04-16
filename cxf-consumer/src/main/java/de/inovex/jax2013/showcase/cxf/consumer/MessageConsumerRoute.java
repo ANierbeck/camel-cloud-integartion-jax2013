@@ -15,7 +15,7 @@ public class MessageConsumerRoute extends RouteBuilder {
 		from("cxf:bean:messageService")
 				.routeId(ShowcaseDefaults.CXF_CONSUMER_ROUTE_ID)
 				.log(LoggingLevel.WARN, ShowcaseDefaults.MESSAGE_LOGGER,
-						"Received Message ${body}")
+						"Received Message!")
 				.process(new Processor() {
 					
 					@Override
@@ -24,6 +24,8 @@ public class MessageConsumerRoute extends RouteBuilder {
 						exchange.getIn().setBody(message.getMessage(), String.class);
 					}
 				})
+				.log(LoggingLevel.WARN, ShowcaseDefaults.MESSAGE_LOGGER,
+						"Message: ${body}")
 				.to(ShowcaseDefaults.HAZELCAST_QUEUE);
 	}
 
