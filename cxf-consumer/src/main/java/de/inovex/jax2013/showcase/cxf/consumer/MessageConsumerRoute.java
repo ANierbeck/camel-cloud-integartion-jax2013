@@ -1,6 +1,7 @@
 package de.inovex.jax2013.showcase.cxf.consumer;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.ExchangePattern;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
@@ -26,7 +27,22 @@ public class MessageConsumerRoute extends RouteBuilder {
 				})
 				.log(LoggingLevel.WARN, ShowcaseDefaults.MESSAGE_LOGGER,
 						"Message: ${body}")
-				.to(ShowcaseDefaults.HAZELCAST_QUEUE);
+				.to(ShowcaseDefaults.HAZELCAST_QUEUE)
+				.process(new Processor() {
+					
+					@Override
+					public void process(Exchange exchange) throws Exception {
+						
+						Exception exception = exchange.getException();
+						Boolean rc = true;
+						if (exception != null)
+							rc = false;
+						
+						exchange.setPattern(ExchangePattern.InOut);
+						exchange.getOut().setBody(rc, Boolean.class);
+					}
+				});
+		
 	}
 
 }
