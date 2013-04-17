@@ -4,36 +4,52 @@
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${dependency.camel.version}/xml/features</repository>
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${dependency.cxf.version}/xml/features</repository>
 
-	<feature name="showcase-cxf-consumer" version="${project.version}"
-		description="JAX Showcase - Karaf Feature">
+	<feature name="showcase-cxf-consumer-light" version="${project.version}"
+		description="JAX Showcase - The light installment for the CXF consuming part. Needs camel-blueprint and camel-cxf pre-installed!">
 		<details>Just the CXF consumer part cxf->hazelcast.</details>
-		<feature version="${dependency.camel.version}">camel-blueprint</feature>
-		<feature version="${dependency.camel.version}">camel-cxf</feature>
-<!-- 		<feature version="${dependency.camel.version}">camel-hazelcast</feature> -->
 		<bundle>mvn:org.apache.camel/camel-hazelcast/${dependency.camel.version}</bundle>
 		<bundle>mvn:${project.groupId}/cxf-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
 
-	<feature name="showcase-hazelcast-consumer" version="${project.version}">
+	<feature name="showcase-hazelcast-consumer-light" version="${project.version}"
+		description="JAX Showcase - The light installment for the Hazelcast consuming part. Needs camel-blueprint, camel-cxf and camel-aws pre-installed! Make sure camel-aws is blacklisted!">
 		<details>The Hazelcast Consumer. Hazelcast -> S3 Bucket</details>
 		<configfile finalname="/etc/de.inovex.jax2013.showcase.s3.producer.cfg">mvn:${project.groupId}/hazelcast-consumer/${project.version}/cfg</configfile>
-		<feature version="${dependency.camel.version}">camel-blueprint</feature>
-		<feature version="${dependency.camel.version}">camel-aws</feature>
-		<feature version="${dependency.camel.version}">camel-cxf</feature>
-<!-- 		<feature version="${dependency.camel.version}">camel-hazelcast</feature> -->
 		<bundle>mvn:org.apache.camel/camel-hazelcast/${dependency.camel.version}</bundle>
 		<bundle>mvn:${project.groupId}/hazelcast-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
 
 	<feature name="showcase-cxf-producer" version="${project.version}"
-		description="JAX Showcase - Karaf Feature">
+		description="JAX Showcase - The Full installment for the CXF producing part, inlcuding needed camel features">
 		<details>The CXF Producing part: File -> CXF</details>
 		<configfile finalname="/etc/de.inovex.jax2013.showcase.cxf.producer.cfg">mvn:${project.groupId}/cxf-producer/${project.version}/cfg</configfile>
 		<feature version="${dependency.camel.version}">camel-blueprint</feature>
 		<feature version="${dependency.camel.version}">camel-cxf</feature>
 		<bundle>mvn:${project.groupId}/cxf-producer/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
+	</feature>
+	
+	<feature name="showcase-cxf-consumer" version="${project.version}"
+		description="JAX Showcase - The Full installment for the CXF consuming part, including the needed camel features.">
+		<details>Just the CXF consumer part cxf->hazelcast.</details>
+		<feature version="${dependency.camel.version}">camel-blueprint</feature>
+		<feature version="${dependency.camel.version}">camel-cxf</feature>
+		<bundle>mvn:org.apache.camel/camel-hazelcast/${dependency.camel.version}</bundle>
+		<bundle>mvn:${project.groupId}/cxf-consumer/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
+	</feature>
+
+	<feature name="showcase-hazelcast-consumer" version="${project.version}"
+		description="JAX Showcase - The Full installment for the hazelcast consuming part, including the camel features.">
+		<details>The Hazelcast Consumer. Hazelcast -> S3 Bucket</details>
+		<configfile finalname="/etc/de.inovex.jax2013.showcase.s3.producer.cfg">mvn:${project.groupId}/hazelcast-consumer/${project.version}/cfg</configfile>
+		<feature version="${dependency.camel.version}">camel-blueprint</feature>
+		<feature version="${dependency.camel.version}">camel-aws</feature>
+		<feature version="${dependency.camel.version}">camel-cxf</feature>
+		<bundle>mvn:org.apache.camel/camel-hazelcast/${dependency.camel.version}</bundle>
+		<bundle>mvn:${project.groupId}/hazelcast-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
 
