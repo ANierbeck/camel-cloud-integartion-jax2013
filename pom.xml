@@ -106,6 +106,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+	<repositories>
+		<repository>
+			<id>inovexInternalRepo</id>
+			<snapshots><enabled>true</enabled></snapshots>
+			<url>http://archiva.inovex.de/archiva/repository/snapshots</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
