@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>de.inovex.jax2013</groupId>
+    <artifactId>showcase</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>de.inovex.jax2013.showcase</groupId>
+  <artifactId>assemblies</artifactId>
+  <packaging>pom</packaging>
+  <name>JAX Showcase - Assemblies</name>
+  <description>This module contains the assembly subprojects for each Karaf instance, with a preconfigured Karaf containing everything needed to run smoothly. </description>
+  <modules>
+  	<module>cxf-producer-karaf</module>
+  	<module>cxf-consumer-karaf</module>
+  	<module>hazelcast-consumer-karaf</module>
+  </modules>
+</project>

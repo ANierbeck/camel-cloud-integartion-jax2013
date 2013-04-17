@@ -1,0 +1,67 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+	<id>bin</id>
+
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+
+	<fileSets>
+
+		<!-- Expanded Karaf Standard Distribution -->
+		<fileSet>
+			<directory>target/dependencies/apache-karaf-${dependency.karaf.version}</directory>
+			<outputDirectory>/</outputDirectory>
+			<excludes>
+				<exclude>**/demos/**</exclude>
+				<exclude>bin/**</exclude>
+			</excludes>
+		</fileSet>
+
+		<!-- Copy over bin/* separately to get the correct file mode -->
+		<fileSet>
+			<directory>target/dependencies/apache-karaf-${dependency.karaf.version}</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>bin/admin</include>
+				<include>bin/karaf</include>
+				<include>bin/start</include>
+				<include>bin/stop</include>
+			</includes>
+			<fileMode>0755</fileMode>
+		</fileSet>
+
+		<!-- Copy over jar files -->
+		<fileSet>
+			<directory>target/features-repo</directory>
+			<outputDirectory>/system</outputDirectory>
+			<excludes>
+				<exclude>**/1.9.4.6/hazelcast-1.9.4.6.jar</exclude>
+			</excludes>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources</directory>
+			<outputDirectory>/</outputDirectory>
+		</fileSet>
+
+	</fileSets>
+
+	<files>
+		<file>
+			<source>target/features-repo/org/apache/karaf/cellar/apache-karaf-cellar/2.2.6-SNAPSHOT/apache-karaf-cellar-2.2.6-SNAPSHOT-node.cfg</source>
+			<outputDirectory>/etc</outputDirectory>
+			<destName>org.apache.karaf.cellar.node.cfg</destName>
+		</file>
+		<file>
+			<source>target/features-repo/org/apache/karaf/cellar/apache-karaf-cellar/2.2.6-SNAPSHOT/apache-karaf-cellar-2.2.6-SNAPSHOT-hazelcast.xml</source>
+			<outputDirectory>/etc</outputDirectory>
+			<destName>hazelcast.xml</destName>
+		</file>
+
+	</files>
+
+</assembly>

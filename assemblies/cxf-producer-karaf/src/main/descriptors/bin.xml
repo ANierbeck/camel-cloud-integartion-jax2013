@@ -1,0 +1,55 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+	<id>bin</id>
+
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+
+	<fileSets>
+
+		<!-- Expanded Karaf Standard Distribution -->
+		<fileSet>
+			<directory>target/dependencies/apache-karaf-${dependency.karaf.version}</directory>
+			<outputDirectory>/</outputDirectory>
+			<excludes>
+				<exclude>**/demos/**</exclude>
+				<exclude>bin/**</exclude>
+			</excludes>
+		</fileSet>
+
+		<!-- Copy over bin/* separately to get the correct file mode -->
+		<fileSet>
+			<directory>target/dependencies/apache-karaf-${dependency.karaf.version}</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>bin/admin</include>
+				<include>bin/karaf</include>
+				<include>bin/start</include>
+				<include>bin/stop</include>
+			</includes>
+			<fileMode>0755</fileMode>
+		</fileSet>
+
+		<!-- Copy over jar files -->
+		<fileSet>
+			<directory>target/features-repo</directory>
+			<outputDirectory>/system</outputDirectory>
+		</fileSet>
+
+
+	</fileSets>
+
+	<files>
+		<file>
+			<source>target/features-repo/de/inovex/jax2013/showcase/cxf-producer/${project.version}/cxf-producer-${project.version}.cfg</source>
+			<outputDirectory>/etc</outputDirectory>
+			<destName>de.inovex.jax2013.showcase.producer.cfg</destName>
+		</file>
+		
+	</files>
+
+</assembly>

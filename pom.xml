@@ -166,6 +166,8 @@
 		<dependency.slf4j.version>1.6.6</dependency.slf4j.version>
 		<dependency.log4j.version>1.2.17</dependency.log4j.version>
 		<dependency.cxf.version>2.5.9</dependency.cxf.version>
+		<dependency.cellar.version>2.2.6-SNAPSHOT</dependency.cellar.version>
+		<dependency.karaf.version>2.2.9</dependency.karaf.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -176,5 +178,6 @@
 		<module>commons</module>
 		<module>hazelcast-consumer</module>
 		<module>cxf-producer</module>
+		<module>assemblies</module>
 	</modules>
 </project>
