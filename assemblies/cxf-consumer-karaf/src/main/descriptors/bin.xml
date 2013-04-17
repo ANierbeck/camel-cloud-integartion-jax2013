@@ -18,6 +18,7 @@
 			<excludes>
 				<exclude>**/demos/**</exclude>
 				<exclude>bin/**</exclude>
+				<exclude>**/org.apache.karaf.features.cfg</exclude>
 			</excludes>
 		</fileSet>
 
@@ -46,6 +47,13 @@
 		<fileSet>
 			<directory>src/main/resources</directory>
 			<outputDirectory>/</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>target/classes/etc</directory>
+            <outputDirectory>/etc/</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
 		</fileSet>
 
 	</fileSets>

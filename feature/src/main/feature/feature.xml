@@ -9,7 +9,8 @@
 		<details>Just the CXF consumer part cxf->hazelcast.</details>
 		<feature version="${dependency.camel.version}">camel-blueprint</feature>
 		<feature version="${dependency.camel.version}">camel-cxf</feature>
-		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
+<!-- 		<feature version="${dependency.camel.version}">camel-hazelcast</feature> -->
+		<bundle>mvn:org.apache.camel/camel-hazelcast/${dependency.camel.version}</bundle>
 		<bundle>mvn:${project.groupId}/cxf-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>
@@ -20,7 +21,8 @@
 		<feature version="${dependency.camel.version}">camel-blueprint</feature>
 		<feature version="${dependency.camel.version}">camel-aws</feature>
 		<feature version="${dependency.camel.version}">camel-cxf</feature>
-		<feature version="${dependency.camel.version}">camel-hazelcast</feature>
+<!-- 		<feature version="${dependency.camel.version}">camel-hazelcast</feature> -->
+		<bundle>mvn:org.apache.camel/camel-hazelcast/${dependency.camel.version}</bundle>
 		<bundle>mvn:${project.groupId}/hazelcast-consumer/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/commons/${project.version}</bundle>
 	</feature>

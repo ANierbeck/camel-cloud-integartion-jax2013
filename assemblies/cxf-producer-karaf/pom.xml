@@ -75,11 +75,9 @@
 						<configuration>
 							<descriptors>
 								<descriptor>mvn:de.inovex.jax2013.showcase/feature/0.1.0-SNAPSHOT/xml/features</descriptor>
-<!-- 								<descriptor>mvn:org.apache.karaf.cellar/apache-karaf-cellar/2.2.6-SNAPSHOT/xml/features</descriptor> -->
 							</descriptors>
 							<features>
 								<feature>showcase-cxf-producer</feature>
-<!-- 								<feature>cellar-cloud</feature> -->
 							</features>
 						</configuration>
 					</execution>

@@ -18,6 +18,7 @@
 			<excludes>
 				<exclude>**/demos/**</exclude>
 				<exclude>bin/**</exclude>
+				<exclude>**/org.apache.karaf.features.cfg</exclude>
 			</excludes>
 		</fileSet>
 
@@ -40,6 +41,12 @@
 			<outputDirectory>/system</outputDirectory>
 		</fileSet>
 
+		<fileSet>
+			<directory>target/classes/etc</directory>
+            <outputDirectory>/etc/</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
+		</fileSet>
 
 	</fileSets>
 
@@ -49,7 +56,6 @@
 			<outputDirectory>/etc</outputDirectory>
 			<destName>de.inovex.jax2013.showcase.producer.cfg</destName>
 		</file>
-		
 	</files>
 
 </assembly>
