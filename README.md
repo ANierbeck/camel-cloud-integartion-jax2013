@@ -24,7 +24,7 @@ The first instance will call a CXF Webservice on the first Amazon EC2 instance. 
 EC2 system will send the message retrieved to a hazelcast queue provided by the Karaf-Cellar infrastructure. 
 The second Amazon EC2 instance will retrieve the message from the hazelcast queue and will write the result to the S3 bucket. 
 
-![Showcase for "Integration in der Cloud mit Camel, Karaf and Cellar"](./Showcase-JAX2013.jpg "Showcase JAX-2013")
+![Showcase for "Integration in der Cloud mit Camel, Karaf and Cellar"](https://github.com/inovex/camel-cloud-integartion-jax2013/blob/master/Showcase-JAX2013.png "Showcase JAX-2013")
 
 
 Using this Showcase
